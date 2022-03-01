@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
-const Protected = () => {
+const Expenses = () => {
   const auth = useContext(AuthContext);
   return (
     <div>
-      <h1>Protected</h1>
+      <h1>Expense Tracker</h1>
       <p>email: {auth.email}</p>
       <p>{JSON.stringify(auth)}</p>
       {auth.authenticated && <p>is logged in</p>}
@@ -14,4 +14,4 @@ const Protected = () => {
   )
 }
 
-export default Protected;
+export default Expenses;

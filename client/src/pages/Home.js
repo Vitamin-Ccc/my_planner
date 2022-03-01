@@ -9,9 +9,9 @@ const Home = () => {
     <div>
       <h1>Home</h1>
       {JSON.stringify(auth)}
-      <Link to ="/protected">Protected</Link>
-      <Link to ="/public">Public</Link>
-      <p onClick = {()=>navigate('/public')}>navigate to public</p>
+      <Link to ="/expense">Expense Tracker</Link>
+      <Link to ="/trips">My Trips</Link>
+      <p onClick = {()=>navigate('/trips')}>navigate to trips</p>
     </div>
   )
 }
