@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.dashboard {
+  background-color: #C7DFC5 !important;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 15px !important;
+}
+
+.dashboard:hover {
+  background-color: white !important;
+  color: #C7DFC5 !important;
+}
+.trips {
+  background-color: #FCE694 !important;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 15px !important;
+}
+
+.trips:hover {
+  background-color: white !important;
+  color: #FCE694 !important;
+}
+.expense {
+  background-color: #C1DBE3 !important;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 15px !important;
+}
+
+.expense:hover {
+  background-color: white !important;
+  color: #C1DBE3 !important;
+}
