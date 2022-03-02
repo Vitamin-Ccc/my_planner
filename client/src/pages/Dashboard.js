@@ -1,18 +1,21 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Comment, Form, Image, List } from "semantic-ui-react";
+import { Button, Comment, Form  } from "semantic-ui-react";
 import PostDelete from "../components/PostDelete";
+import PostEdit from "../components/PostEdit";
 import { AuthContext } from "../providers/AuthProvider";
 
 
 const Dashboard = () => {
   const [posts, setPosts] = useState([]);
   const [newContent, setNewContent] = useState([]);
+  const [editedPost, setEditedPost] = useState(false)
   const auth = useContext(AuthContext)
 
   useEffect(() => {
     getPosts();
-  }, [])
+    setEditedPost(false)
+  }, [editedPost])
 
   const getPosts = async () => {
     try {
@@ -39,6 +42,7 @@ const Dashboard = () => {
     let res = await axios.post(`/api/posts`, newPost)
     setNewContent("");
     addPost(res.data);
+    console.log(res.data)
   }
 
   const renderPosts = () => {
@@ -49,26 +53,27 @@ const Dashboard = () => {
         </div>
       )
     }
-    return (posts.map((post, id) => {
-      return (
-        <Comment key={id}>
+    return (
+      posts.map((post) => (
+        <Comment key={post.id}>
           <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
           <Comment.Content>
             <Comment.Author>Me</Comment.Author>
             <Comment.Metadata>
+              {/* This is a placeholder for created_at */}
               <div>1 day ago</div>
             </Comment.Metadata>
             <Comment.Text>
               {post.content}
             </Comment.Text>
             <Comment.Actions>
-              <Comment.Action><PostDelete {...post} deletePost={deletePost} /></Comment.Action>
+              <PostEdit {...post} setEditedPost={setEditedPost}/>
+              <PostDelete {...post} deletePost={deletePost} />
             </Comment.Actions>
           </Comment.Content>
           
         </Comment>
-      )
-    }))
+    )))
   }
 
   return (

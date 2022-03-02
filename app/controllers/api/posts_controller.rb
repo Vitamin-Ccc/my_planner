@@ -12,7 +12,7 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    if @post.save
+    if(@post.save)
       render json: @post
     else
       render json: {error: @post.errors}, status: 422
@@ -20,7 +20,7 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    if(@post.update(post_params))
       render json: @post
     else
       render json: {error: @post.errors}, status: 422
