@@ -28,12 +28,14 @@ const PostEdit = (props) => {
         size="tiny"
         open={open}
         onClose={handleClose}
+        dimmer="blurring"
       >
-        <Header icon="edit" content="EDIT THIS POST" />
+        <Header icon="edit" content="Edit this post" />
         <Form>
           <TextArea 
             value={post}
             onChange={(e) => setPost(e.target.value)}
+            rows={5}
           />
         </Form>
         <Modal.Actions onClick={handleClose}>

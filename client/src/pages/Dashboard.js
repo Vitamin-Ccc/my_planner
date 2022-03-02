@@ -86,6 +86,7 @@ const Dashboard = () => {
             placeholder='Add a post'
             value={String(newContent)}
             onChange={(e) => setNewContent(e.target.value)}
+            rows={4}
           />
         </Form.Field>
 

@@ -17,8 +17,9 @@ const PostDelete = (props) => {
         size="tiny"
         open={open}
         onClose={handleClose}
+        dimmer="blurring"
       >
-        <Header icon="trash alternate" content="DELETE THIS POST" />
+        <Header icon="trash alternate" content="Delete this post" />
         <Modal.Content>
           <p>
             Are you sure you want to delete this post?
