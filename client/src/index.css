@@ -17,31 +17,37 @@ code {
   color: white !important;
   font-weight: bold !important;
   font-size: 15px !important;
+  text-shadow: 2px 2px 5px #698d66;
 }
 
 .dashboard:hover {
   background-color: white !important;
   color: #C7DFC5 !important;
+  text-shadow: none;
 }
 .trips {
   background-color: #FCE694 !important;
   color: white !important;
   font-weight: bold !important;
   font-size: 15px !important;
+  text-shadow: 2px 2px 5px #9c8738;
 }
 
 .trips:hover {
   background-color: white !important;
   color: #FCE694 !important;
+  text-shadow: none;
 }
 .expense {
   background-color: #C1DBE3 !important;
   color: white !important;
   font-weight: bold !important;
   font-size: 15px !important;
+  text-shadow: 2px 2px 5px #5c7a83;
 }
 
 .expense:hover {
   background-color: white !important;
   color: #C1DBE3 !important;
+  text-shadow: none;
 }
