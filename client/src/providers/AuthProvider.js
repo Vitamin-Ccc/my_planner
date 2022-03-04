@@ -13,12 +13,11 @@ const AuthProvider = (props) => {
   const handleRegister = async (user, navigate) => {
     //axios call to register users (interacting with DB)
     try {
-      let res = await axios.post("api/auth", user);
+      let res = await axios.post("/api/auth", user);
       // console.log("res:", user);
       setUser(res.data.data);
       navigate("/dashboard")
       // navigate to a certain page
-
     } catch (err) {
       console.log(err.response);
       alert("error occurred registering user")
@@ -28,7 +27,7 @@ const AuthProvider = (props) => {
   const handleLogin = async (user, navigate) => {
     //axios call to login users (interacting with DB)
     try {
-      let res = await axios.post("api/auth/sign_in", user);
+      let res = await axios.post("/api/auth/sign_in", user);
       setUser(res.data.data);
       navigate("/dashboard")
     } catch (err) {
@@ -40,7 +39,7 @@ const AuthProvider = (props) => {
   const handleLogout = async (navigate) => {
     //axios call to logout users (interacting with DB)
     try {
-      let res = await axios.delete("api/auth/sign_out");
+      let res = await axios.delete("/api/auth/sign_out");
       console.log(res);
       setUser(null);
       navigate("/login")

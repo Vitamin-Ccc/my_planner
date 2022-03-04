@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { Button, Form } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
@@ -8,9 +9,10 @@ const Register = () => {
   const [email, setEmail] = useState("testing@test.com")
   const [password, setPassword] = useState("123456")
   const [passwordConfirmation, setPasswordConfirmation] = useState("123456")
+  const [nickname, setNickname] = useState("happylife")
   const handleSubmit = (e) => {
-    // not using semantic, need to have this to prevent default
-    e.preventDefault();
+    // if not using semantic, need to have this to prevent default
+    // e.preventDefault();
     if(password !== passwordConfirmation){
       //let user know these don't match
       alert("passwords do not match");
@@ -23,28 +25,35 @@ const Register = () => {
   return (
     <div>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <p>email</p>
+      <Form onSubmit={handleSubmit}>
+        <p>Email</p>
         <input
           value={email}
           onChange={(e) => {
             setEmail(e.target.value)
           }}
         />
-        <p>password</p>
+        <p>Username</p>
+        <input
+          value={nickname}
+          onChange={(e) => {
+            setNickname(e.target.value)
+          }}
+        />
+        <p>Password</p>
         <input
           value={password}
           onChange={(e) => {
             setPassword(e.target.value)
           }} />
-        <p>password confirmation</p>
+        <p>Password Confirmation</p>
         <input
           value={passwordConfirmation}
           onChange={(e) => {
             setPasswordConfirmation(e.target.value)
           }} />
-        <button>Register</button>
-      </form>
+        <Button type="submit">Register</Button>
+      </Form>
     </div>
   );
 };

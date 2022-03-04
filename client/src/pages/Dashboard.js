@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Comment, Form  } from "semantic-ui-react";
+import { Button, Comment, Form } from "semantic-ui-react";
 import PostDelete from "../components/PostDelete";
 import PostEdit from "../components/PostEdit";
 import { AuthContext } from "../providers/AuthProvider";
@@ -48,8 +48,8 @@ const Dashboard = () => {
   const renderPosts = () => {
     if (posts.length === 0) {
       return (
-        <div>
-          <p style={{ textAlign: "center" }}>Post something here!</p>
+        <div style={{ textAlign: "center" }}>
+          <h1>Post anything here!</h1>
         </div>
       )
     }
@@ -67,18 +67,18 @@ const Dashboard = () => {
               {post.content}
             </Comment.Text>
             <Comment.Actions>
-              <PostEdit {...post} setEditedPost={setEditedPost}/>
+              <PostEdit {...post} setEditedPost={setEditedPost} />
               <PostDelete {...post} deletePost={deletePost} />
             </Comment.Actions>
           </Comment.Content>
-          
+
         </Comment>
-    )))
+      )))
   }
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1 style={{textAlign:"center"}}>Dashboard</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Field>
           <Form.TextArea
@@ -89,13 +89,16 @@ const Dashboard = () => {
             rows={4}
           />
         </Form.Field>
-
-        <Button type="submit">Post</Button>
+        <Form.Field style={{ display: "flex", justifyContent: "right" }}>
+          <Button type="submit">Post</Button>
+        </Form.Field>
       </Form>
-      <Comment.Group>
+      {/* <div class="ui comments fluid" style={{border: "2px solid green"}}> */}
+      <Comment.Group size="big" style={{ border: "2px solid green", maxWidth: "100vw" }}>
         {renderPosts()}
       </Comment.Group>
     </div>
+    // </div>
   )
 }
 

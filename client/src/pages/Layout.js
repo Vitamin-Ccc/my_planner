@@ -17,10 +17,10 @@ const Layout = () => {
 const styles = {
 
   pageContainer: {
-    maxWidth: "1000px",
+    maxWidth: "80%",
     margin: "auto",
     border: "1px solid red",
-    padding: "10px",
+    padding: "20px",
   },
 
 }
