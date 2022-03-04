@@ -4,6 +4,7 @@ import { Button, Comment, Form } from "semantic-ui-react";
 import PostDelete from "../components/PostDelete";
 import PostEdit from "../components/PostEdit";
 import { AuthContext } from "../providers/AuthProvider";
+import moment from "moment"
 
 
 const Dashboard = () => {
@@ -61,7 +62,7 @@ const Dashboard = () => {
             <Comment.Author>Me</Comment.Author>
             <Comment.Metadata>
               {/* This is a placeholder for created_at */}
-              <div>1 day ago</div>
+              <div>{moment(post.created_at).calendar()}</div>
             </Comment.Metadata>
             <Comment.Text>
               {post.content}
