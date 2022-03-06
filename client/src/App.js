@@ -7,6 +7,7 @@ import RequireAuth from './components/RequireAuth';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import UpdateUserAvatar from './pages/UpdateUserAvatar';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/trips' element={<Trips />} />
             <Route path='/expense' element={<Expenses />} />
+            <Route path='/avatar' element={<UpdateUserAvatar />} />
           </Route>
         </Route>
       </Routes>

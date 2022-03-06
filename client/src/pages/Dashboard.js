@@ -5,6 +5,7 @@ import PostDelete from "../components/PostDelete";
 import PostEdit from "../components/PostEdit";
 import { AuthContext } from "../providers/AuthProvider";
 import moment from "moment"
+import { useNavigate } from "react-router";
 
 
 const Dashboard = () => {
@@ -12,6 +13,8 @@ const Dashboard = () => {
   const [newContent, setNewContent] = useState([]);
   const [editedPost, setEditedPost] = useState(false)
   const auth = useContext(AuthContext)
+  const navigate = useNavigate();
+  console.log(auth)
 
   useEffect(() => {
     getPosts();
@@ -57,11 +60,9 @@ const Dashboard = () => {
     return (
       posts.map((post) => (
         <Comment key={post.id}>
-          <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+          {auth && <Comment.Avatar src={auth.image} /> }
           <Comment.Content>
-            <Comment.Author>Me</Comment.Author>
             <Comment.Metadata>
-              {/* This is a placeholder for created_at */}
               <div>{moment(post.created_at).calendar()}</div>
             </Comment.Metadata>
             <Comment.Text>
@@ -79,6 +80,9 @@ const Dashboard = () => {
 
   return (
     <div>
+      <div style={{border:"2px solid orange", padding:"10px", display:"flex", justifyContent:"right" }}>
+        <Button onClick={()=>navigate(`/avatar`)}>Update Profile Image</Button>
+      </div>
       <h1 style={{textAlign:"center"}}>Dashboard</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Field>
@@ -91,10 +95,9 @@ const Dashboard = () => {
           />
         </Form.Field>
         <Form.Field style={{ display: "flex", justifyContent: "right" }}>
-          <Button type="submit">Post</Button>
+          <Button color="green" type="submit">Post</Button>
         </Form.Field>
       </Form>
-      {/* <div class="ui comments fluid" style={{border: "2px solid green"}}> */}
       <Comment.Group size="big" style={{ border: "2px solid green", maxWidth: "100vw" }}>
         {renderPosts()}
       </Comment.Group>
