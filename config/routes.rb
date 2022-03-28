@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   namespace :api do
     put 'users/avatar', to: 'users#avatar'
     resources :posts
-
+    resources :expenses
   end
 end

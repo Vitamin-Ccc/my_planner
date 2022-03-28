@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  money: 1.5
+  time: 2022-03-06
+  category: MyString
+
+two:
+  description: MyText
+  money: 1.5
+  time: 2022-03-06
+  category: MyString

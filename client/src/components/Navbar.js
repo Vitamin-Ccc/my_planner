@@ -42,7 +42,7 @@ const Navbar = () => {
                 </Grid.Column>
                 <Grid.Column>
                   <Menu fluid vertical>
-                    <Link to="/expense"><Menu.Item className='expense'>Expense Tracker</Menu.Item></Link>
+                    <Link to="/expensetracker"><Menu.Item className='expense'>Expense Tracker</Menu.Item></Link>
                   </Menu>
                 </Grid.Column>
               </Grid.Row>

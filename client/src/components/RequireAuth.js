@@ -37,7 +37,7 @@ const RequireAuth = () => {
 
   return (
     <div>
-      <h1>Hello {auth.email}</h1>
+      {/* <h1>Hello {auth.email}</h1> */}
       <Outlet />
     </div>
   )
