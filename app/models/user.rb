@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   has_many :posts, dependent: :destroy
   has_many :trips, dependent: :destroy
-  has_many :expenses, dependent: :destroy
+  has_many :trackers, dependent: :destroy
 end

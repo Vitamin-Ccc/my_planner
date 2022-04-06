@@ -1,21 +1,22 @@
 class Api::ExpensesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_expense, only: [:destroy, :update, :show]
+  before_action :set_tracker
+  before_action :set_expense, only: [:show, :update, :destroy]
 
   def index
-    render json: current_user.expenses
+    render json: @tracker.expenses.order(transaction_date: :desc)
   end
-  
+
   def show
     render json: @expense
   end
 
   def create
-    @expense = current_user.expenses.new(expense_params)
+    @expense = @tracker.expenses.new(expense_params)
     if(@expense.save)
       render json: @expense
     else
-      render json: {error: @expense.errors}, status: 422
+      render json: {errors: @expense.errors}, status: 422
     end
   end
 
@@ -23,10 +24,10 @@ class Api::ExpensesController < ApplicationController
     if(@expense.update(expense_params))
       render json: @expense
     else
-      render json: {error: @expense.errors}, status: 422
+      render json: {errors: @expense.errors}, status: 422
     end
   end
-  
+
   def destroy
     render json: @expense.destroy
   end
@@ -34,10 +35,14 @@ class Api::ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:name, :description, :price, :transaction_date, :user_id)
+    params.require(:expense).permit(:name, :description, :price, :transaction_date, :tracker_id)
   end
-  
+
+  def set_tracker
+    @tracker = Tracker.find(params[:tracker_id])
+  end
+
   def set_expense
-    @expense = Expense.find(params[:id])
+    @expense = @tracker.expenses.find(params[:id])
   end
 end

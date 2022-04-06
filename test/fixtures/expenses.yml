@@ -4,12 +4,12 @@ one:
   name: MyString
   description: MyText
   price: 1.5
-  transaction_date: 2022-03-28
-  user: one
+  transaction_date: 2022-04-06
+  tracker: one
 
 two:
   name: MyString
   description: MyText
   price: 1.5
-  transaction_date: 2022-03-28
-  user: two
+  transaction_date: 2022-04-06
+  tracker: two

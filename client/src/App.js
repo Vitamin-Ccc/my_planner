@@ -7,7 +7,8 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import UpdateUserAvatar from './pages/UpdateUserAvatar';
-import ExpenseTrackers from './pages/ExpenseTrackers';
+import Trackers from './pages/Trackers';
+import Tracker from './pages/Tracker';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
             {/* protected routes go here */}
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/trips' element={<Trips />} />
-            <Route path='/expensetracker' element={<ExpenseTrackers />} />
+            <Route path='/expensetracker' element={<Trackers />} />
+            <Route path='/expensetracker/:id' element={<Tracker />} />
             <Route path='/avatar' element={<UpdateUserAvatar />} />
           </Route>
         </Route>

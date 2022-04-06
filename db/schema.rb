@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_080640) do
+ActiveRecord::Schema.define(version: 2022_04_06_090254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 2022_03_28_080640) do
     t.text "description"
     t.float "price"
     t.date "transaction_date"
-    t.bigint "user_id", null: false
+    t.bigint "tracker_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_expenses_on_user_id"
+    t.index ["tracker_id"], name: "index_expenses_on_tracker_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2022_03_28_080640) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "trackers", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_trackers_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -85,7 +93,8 @@ ActiveRecord::Schema.define(version: 2022_03_28_080640) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "expenses", "users"
+  add_foreign_key "expenses", "trackers"
   add_foreign_key "posts", "users"
+  add_foreign_key "trackers", "users"
   add_foreign_key "trips", "users"
 end

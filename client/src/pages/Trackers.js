@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, Form, Icon } from "semantic-ui-react";
 
 const ExpenseTrackers = () => {
@@ -13,11 +14,11 @@ const ExpenseTrackers = () => {
 
   const getExpenses = async () => {
     try {
-      let res = await axios.get("/api/expenses")
+      let res = await axios.get("/api/trackers")
       setTrackers(res.data)
       console.log(res.data)
     } catch (err) {
-      alert("error getting expenses")
+      alert("error getting trackers")
     }
   }
 
@@ -31,7 +32,7 @@ const ExpenseTrackers = () => {
 
   const handleSubmit = async (e) => {
     const newExpenseTracker = { name }
-    let res = await axios.post("/api/expenses", newExpenseTracker)
+    let res = await axios.post("/api/trackers", newExpenseTracker)
     addExpenseTracker(res.data)
     setName("")
     setShowNewForm(false)
@@ -45,9 +46,17 @@ const ExpenseTrackers = () => {
         </div>
       )
     }
-    return(
+    return (
       trackers.map((tracker) => (
-        <h2>{tracker.name}</h2>
+        <h2 style={{ textTransform: 'capitalize' }}>
+          <Link
+            to={`/expensetracker/${tracker.id}`}
+            style={{ textDecoration: 'none' }}
+            className="tracker"
+          >
+            {tracker.name}
+          </Link>
+        </h2>
       ))
     )
   }
@@ -60,7 +69,7 @@ const ExpenseTrackers = () => {
           <Form.Field>
             <label>Name</label>
             <input
-            required
+              required
               value={name}
               placeholder='Name of expense tracker'
               onChange={(e) => setName(e.target.value)}
