@@ -9,10 +9,10 @@ const ExpenseTrackers = () => {
   const [trackers, setTrackers] = useState([]);
 
   useEffect(() => {
-    getExpenses()
+    getTrackers()
   }, [])
 
-  const getExpenses = async () => {
+  const getTrackers = async () => {
     try {
       let res = await axios.get("/api/trackers")
       setTrackers(res.data)
@@ -48,10 +48,10 @@ const ExpenseTrackers = () => {
     }
     return (
       trackers.map((tracker) => (
-        <h2 style={{ textTransform: 'capitalize' }}>
+        <h2 style={{ textTransform: 'capitalize', display: 'flex',  justifyContent:'center' }}>
           <Link
             to={`/expensetracker/${tracker.id}`}
-            style={{ textDecoration: 'none' }}
+            style={{ textDecoration: 'none', textAlign: "center"}}
             className="tracker"
           >
             {tracker.name}
