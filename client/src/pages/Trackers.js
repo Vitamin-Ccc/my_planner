@@ -8,6 +8,7 @@ const ExpenseTrackers = () => {
   const [name, setName] = useState("")
   const [trackers, setTrackers] = useState([]);
 
+  //retrieve data
   useEffect(() => {
     getTrackers()
   }, [])

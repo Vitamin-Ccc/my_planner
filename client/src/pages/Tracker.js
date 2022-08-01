@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { Button } from "semantic-ui-react";
+import ExpenseAdd from "../components/ExpenseAdd";
 import TrackerDelete from "../components/TrackerDelete";
 import { AuthContext } from "../providers/AuthProvider";
 
 const ExpenseTracker = () => {
-  const auth = useContext(AuthContext);
   const params = useParams();
   const navigate = useNavigate();
   const [tracker, setTracker] = useState("");
@@ -32,9 +32,9 @@ const ExpenseTracker = () => {
     <div>
       <h1 style={{display: 'flex',  justifyContent:'center'}}>{tracker.name}</h1>
       <Button>
-
       <TrackerDelete {...tracker} deleteTracker={deleteTracker} />
       </Button>
+      <ExpenseAdd />
       <p>{JSON.stringify(tracker)}</p>
     </div>
   )

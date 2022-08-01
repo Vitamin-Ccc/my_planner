@@ -10,7 +10,7 @@ const TrackerDelete = (props) => {
   return (
     <>
       <Comment.Action onClick={handleOpen}>
-        Delete
+        Delete This Tracker
       </Comment.Action>
       <Modal
         closeIcon
