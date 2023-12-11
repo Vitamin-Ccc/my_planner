@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Form, Modal, TextArea } from 'semantic-ui-react'
 
 const ExpenseAdd = () => {
   const [open, setOpen] = useState(false)
@@ -15,23 +15,20 @@ const ExpenseAdd = () => {
         trigger={<Button>Add Expense</Button>}
       >
         <Modal.Header>Add an Expense</Modal.Header>
-        <Modal.Content image>
-          <Image size='medium' src='/images/avatar/large/rachel.png' wrapped />
+        <Modal.Content>
           <Modal.Description>
-            <Header>Default Profile Image</Header>
-            <p>
-              We've found the following gravatar image associated with your e-mail
-              address.
-            </p>
-            <p>Is it okay to use this photo?</p>
+            <Form>
+              <TextArea
+              />
+            </Form>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button color='black' onClick={() => setOpen(false)}>
-            Nope
+            Cancel
           </Button>
           <Button
-            content="Yep, that's me"
+            content="Add"
             labelPosition='right'
             icon='checkmark'
             onClick={() => setOpen(false)}
